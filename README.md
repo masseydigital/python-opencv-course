@@ -1,7 +1,20 @@
 # python-opencv-course
 Udemy Python for Computer Vision with OpenCV and Deep Learning Course
 
+Install the course content with:
+
+```powershell
+conda env create -f cvcourse_windows.yml
+```
+
+Activate this course with:
+
+```powershell
+conda activate python-cvcourse
+```
+
 ## NumPy and Matplotlib Recap
+
 [Numpy Manual](https://docs.scipy.org/doc/numpy/reference/index.html)
 
 ```python
@@ -120,4 +133,32 @@ _Kerneling_ can be applied over an image to produce a variety of effects.
 
 [Interactive Visualizer](http://setosa.io/ev/image-kernels/)
 
-An _image kernel_ is a small matrix used to applly effects like the ones you might find in Photoshop or Gimp, such as blurring, sharpening, outlining, or embossing.  They are also used in machine learning for feature extraction.
+An _image kernel_ is a small matrix used to apply effects like the ones you might find in Photoshop or Gimp, such as blurring, sharpening, outlining, or embossing.  They are also used in machine learning for feature extraction.
+
+### Morphological Operators
+
+_Morphological Operators_ are sets of Kernels that can achieve a variety of effects such as reducing noise.  I.e. reducing black points on a white background.  Other operators can also achieve an erosion or dilation effect (common for text data).
+
+_Erosion_ is a morphological operator that can be used to separate the foreground from the background.
+
+_Dilation_ adds more to the foreground.
+
+_Opening_ is an erosion followed by a dilation.  This is helpful for removing background noise.
+
+```python
+opening = cv2.morphologyEx(noise_img, cv2.MORPH_OPEN, kernel)
+```
+
+_Closing_ is a good way to get rid of noise in the foreground.
+
+_Gradient_ is a crude form of edge detection that subtracts the opening from the closing to give you the edge.
+
+An _Image Gradient_ is a directional change in the intensity or color of an image.   _Sobel Feldman Operators_ are an example of an image gradient edge detection algorithm.  Gradients can be calculated in a specific direction.
+
+A _normalized gradient magnitude_ shows multi-directional edges in one image.
+
+### Histograms
+
+A _histogram_ is a visual representation of the distribution of a continuous feature.  Histograms are represented by bar charts and can include a distribution trend line.  For images, we can display the frequency of values for colors.  Each channel has values between 0-255 and there are 3 channels in an rgb image.
+
+_Histogram Equalization_ is a method of contrast adjustment based on the image's histogram.
