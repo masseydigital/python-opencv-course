@@ -105,9 +105,9 @@ _Callbacks_ allow us to connect images to event functions with OpenCV..  This al
 
 OpenCV has events that can be used to input actions into a cv2 image window.  Mouse clicks are a common event that you can call.  You can use multiple if statements to provide multiple inputs.
 
-### Image Processing with OpenCV
+## Image Processing with OpenCV
 
-#### ColorSpaces
+### ColorSpaces
 
 RGB is the most common color space that we see, but there are also other color spaces that have been developed such as HSL (hue, saturation, lightness) and HSV (hue, saturation, value).  HSL and HSV more closely represent how humans see colors.
 
@@ -162,3 +162,8 @@ A _normalized gradient magnitude_ shows multi-directional edges in one image.
 A _histogram_ is a visual representation of the distribution of a continuous feature.  Histograms are represented by bar charts and can include a distribution trend line.  For images, we can display the frequency of values for colors.  Each channel has values between 0-255 and there are 3 channels in an rgb image.
 
 _Histogram Equalization_ is a method of contrast adjustment based on the image's histogram.
+
+## Video Basics
+
+**Don't have multiple kernels accessing video feeds at one time**
+
