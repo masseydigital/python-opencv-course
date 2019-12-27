@@ -108,5 +108,16 @@ new_pixel = a * pixel_1 + b * pixel_2 + y
 
 _Masking_ allows us to select parts of an image that we define.   Generally this is done through making things to come through as white and things to mask out in black.
 
+### Thresholding, Blurring, and Smoothing
 
+_Thresholding_ is fundamentally a very simple method of segmenting an image into different parts.  Thresholding will convert an image to black and white.
 
+_Smoothing_ an image can help get rid of noise, or help an application focus on general details.  Blurring or smoothing are often used for edge detection.
+
+_Gamma Correction_ can be applied to an image to make it appear brighter or darker.
+
+_Kerneling_ can be applied over an image to produce a variety of effects.
+
+[Interactive Visualizer](http://setosa.io/ev/image-kernels/)
+
+An _image kernel_ is a small matrix used to applly effects like the ones you might find in Photoshop or Gimp, such as blurring, sharpening, outlining, or embossing.  They are also used in machine learning for feature extraction.
