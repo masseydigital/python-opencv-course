@@ -243,8 +243,24 @@ The _Lucas Kanade_ algorithm only computes optical flow for a _sparse_ feature s
 
 The _Gunner Farneback's_ algorithm is used to calculate _dense_ optical flow (all points).
 
+When we are using Gunner Farneback, we can convert from RGB to HSV.  When we do this, we need to convert from cartesian color coordinates to polar color coordinates.  
+
 [Image Pyramids](https://en.wikipedia.org/wiki/Pyramid_(image_processing)) can be used with the Lucas Kanade algorithm to find optical flow at multiple resolutions.
 
 ### MeanShift and CamShift
+
+The _MeanShift_ algorithm does the following:
+
+1) Plot a set of red points and blue points on top of each other
+2) Determine the direction of the closes cluster centroid (most nearby points)
+3) At the end of iteration 1, all blue points will have moved to closest cluster
+4) Continue iterating until convergence ( no more movement )
+5) Your clusters are now defined
+
+_K Means_ is another clustering algorithm used in machine learning where you define the number of clusters.
+
+MeanShift will be given a target to track, calculate a color histogram of the target area, and then keep sliding the tracking window to the closest match.
+
+_CamShift_ (Continuously Adaptive MeanShift) wil adapt the size of the target window as the target moves in the frame (or out).
 
 ### Built-in Tracking Apis
