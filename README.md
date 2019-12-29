@@ -169,13 +169,19 @@ _Histogram Equalization_ is a method of contrast adjustment based on the image's
 
 ## Object Detection
 
+### Template Matching
+
 _Template Matching_ is looking for an exact copy of an image in another image.  It does this by scanning a larger image for a provided template by sliding it across the larger image.  The main option that can be adjusted is the comparison method used as the target template to slide across the larger image.  The methods are some sort of correlation based metric.
+
+### Corner Detection
 
 _Corner Detection_ is looking for corners in an image.  A _Corner_ is a point whose local neighborhood stands in two dominant and different edge directions.  Another way this could be said is that a corner is the junction of two edges, where an edge is a sudden change in image brightness.  Two common edge detection algorithms are _Harris Corner Detection_ and _Shi-Tomasi Corner Detection._
 
 _Harris Corner Detection_ is based around corners can be detected by looking for significant changes in all directions.  Regions that have no change in any direction are called _Flat_.  _Edges_ won't have a major change in either edge.
 
 The _Shi-Tomasi Corner Detection_ algorithm makes a small modification to the Harris Corner Detection algorithm to achieve better results.  This modification is changing the scoring algorithm for the change detection.
+
+### Edge Detection
 
 _Edge Detection_ is expanding to find general edges of objects.  One of the most popular detectors is the _Canny Edge_ detector.  The Canny Edge Detection algorithm is a multi-stage algorithm.  
 
@@ -188,13 +194,23 @@ _Edge Detection_ is expanding to find general edges of objects.  One of the most
 **For high resolution images, it is a good idea to apply your own custom blur**
 **The Canny Algorithm also requires a user to decide on low and high threshold values.**
 
+### Grid Detection
+
 _Grid Detection_ combines both concepts to detect grids in images.  Cameras often create distortion in an image such as radial distortion and tangential distortion.  A good way to way to account for these distortions when performing operations like object tracking is to have a recognizable pattern attached ot the object being tracked.  Grid patterns are often used to calibrate cameras and track motion.
+
+### Contour Detection
 
 _Contour Detection_ is used to detect foreground vs background and allows for detection of external vs internal contours (eyes and smile from a cartoon face).  _Contours_ are defined as simply a curve joining all the continuous points (along the boundary), having the same color or intensity.  They are useful for shape analysis and object detection/recognition.  _External Contours_ are contours that occur at the outside edge of a shape.  _Internal Contours_ are contours that occur in the inside of a shape.s
 
+### Feature Matching
+
 _Feature Matching_ are advanced methods of detecting matching objects in another image, even if the target image is not shown.  Feature matching extracts defining key features from an input image, then using a distance calculation, finds all the matches in a secondary image - meaning we no longer need an exact copy of the image.
 
+### Watershed Algorithm
+
 The _watershed algorithm_ is an advanced algorithm that allows us to segment images into foreground and background.  It also allows us to manually set seeds to choose segments of an image.  The term watershed comes from geography - a land area that channels rainfall and snowmelt to creeks, streams, and rivers, and eventually to outflow points such as reservoirs, bays, and the ocean.  In image processing this is represented by a grayscale topographic surface where _high intensity_ denotes peaks and hills while _low intensity_ denotes valleys.  The algorithm can then fill every isolated valleys with different colored labels.
+
+### Haar Cascades and Face Detection
 
 _Haar Cascades_ can be used to detect faces and images.  This is not considered facial recognition (need deep learning).  Haar Cascades are a key component of the Viola Jones object detection framework.  It is also important to note that face detection is not the same as face recognition.  This algorithm is useful to detect if there is a face in an image and locate it, but not who it belongs too.
 
@@ -202,4 +218,33 @@ The main features in the Viola-Jones algorithm are edge features (white against 
 
 Calculating the sums for the entire image would be computationally expensive, but the viola-jones algorithm solves this by using the integral image (summed area table) O(1) running time.  The algorithm also saves time by going through a cascade of classifiers.  Once an image fails a classifier, we can stop attempting to detect a face.
 
-The downside to this algorithm is the very large data sets needed to craete your own features.  Luckily though, many pre-training sets of features already exist!
+The downside to this algorithm is the very large data sets needed to create your own features.  Luckily though, many pre-training sets of features already exist!
+
+## Object Tracking
+
+### Optical Flow
+
+Optical Flow is the pattern of apparent motion of images between two consecutive frames caused by movement of object or camera.  
+
+Optical flow makes a few assumptions:
+
+1) The pixel intensities of an object do not change between consecutive frames
+2) Neighboring pixels have similar motion
+
+In OpenCV, optical flow methods do the following (Lucas-Kanade function)...
+
+* Take in a given set of points and a frame
+* Attempt to find those same points in the next frame
+* Uses supplies points to track
+
+**The techniques that are given do not help differentiate if camera is moving or if the object is moving (in opposite directions)
+
+The _Lucas Kanade_ algorithm only computes optical flow for a _sparse_ feature set (only the points that we define)
+
+The _Gunner Farneback's_ algorithm is used to calculate _dense_ optical flow (all points).
+
+[Image Pyramids](https://en.wikipedia.org/wiki/Pyramid_(image_processing)) can be used with the Lucas Kanade algorithm to find optical flow at multiple resolutions.
+
+### MeanShift and CamShift
+
+### Built-in Tracking Apis
