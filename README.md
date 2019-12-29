@@ -167,3 +167,33 @@ _Histogram Equalization_ is a method of contrast adjustment based on the image's
 
 **Don't have multiple kernels accessing video feeds at one time**
 
+## Object Detection
+
+_Template Matching_ is looking for an exact copy of an image in another image.  It does this by scanning a larger image for a provided template by sliding it across the larger image.  The main option that can be adjusted is the comparison method used as the target template to slide across the larger image.  The methods are some sort of correlation based metric.
+
+_Corner Detection_ is looking for corners in an image.  A _Corner_ is a point whose local neighborhood stands in two dominant and different edge directions.  Another way this could be said is that a corner is the junction of two edges, where an edge is a sudden change in image brightness.  Two common edge detection algorithms are _Harris Corner Detection_ and _Shi-Tomasi Corner Detection._
+
+_Harris Corner Detection_ is based around corners can be detected by looking for significant changes in all directions.  Regions that have no change in any direction are called _Flat_.  _Edges_ won't have a major change in either edge.
+
+The _Shi-Tomasi Corner Detection_ algorithm makes a small modification to the Harris Corner Detection algorithm to achieve better results.  This modification is changing the scoring algorithm for the change detection.
+
+_Edge Detection_ is expanding to find general edges of objects.  One of the most popular detectors is the _Canny Edge_ detector.  The Canny Edge Detection algorithm is a multi-stage algorithm.  
+
+1) Apply Gaussian Filter to smooth the image in order to remove any noise.
+2) Find the intensity gradients of the image
+3) Apply non-maximum suppression to get rid of spurious response to edge detection.
+4) Apply double threshold to determine potential edges.
+5) Track edges by hysteresis: Finalize detection of edges by suppressing all the other edges that are weak and not connected to strong edges.
+
+**For high resolution images, it is a good idea to apply your own custom blur**
+**The Canny Algorithm also requires a user to decide on low and high threshold values.**
+
+_Grid Detection_ combines both concepts to detect grids in images.  Cameras often create distortion in an image such as radial distortion and tangential distortion.  A good way to way to account for these distortions when performing operations like object tracking is to have a recognizable pattern attached ot the object being tracked.  Grid patterns are often used to calibrate cameras and track motion.
+
+_Contour Detection_ is used to detect foreground vs background and allows for detection of external vs internal contours (eyes and smile from a cartoon face).  _Contours_ are defined as simply a curve joining all the continuous points (along the boundary), having the same color or intensity.  They are useful for shape analysis and object detection/recognition.  _External Contours_ are contours that occur at the outside edge of a shape.  _Internal Contours_ are contours that occur in the inside of a shape.s
+
+_Feature Matching_ are advanced methods of detecting matching objects in another image, even if the target image is not shown.  Feature matching extracts defining key features from an input image, then using a distance calculation, finds all the matches in a secondary image - meaning we no longer need an exact copy of the image.
+
+The _watershed algorithm_ is an advanced algorithm that allows us to segment images into foreground and background.  It also allows us to manually set seeds to choose segments of an image.  The term watershed comes from geography - a land area that channels rainfall and snowmelt to creeks, streams, and rivers, and eventually to outflow points such as reservoirs, bays, and the ocean.  In image processing this is represented by a grayscale topographic surface where _high intensity_ denotes peaks and hills while _low intensity_ denotes valleys.  The algorithm can then fill every isolated valleys with different colored labels.
+
+_Haar Cascades_ can be used to detect faces and images.  This is not considered facial recognition (need deep learning).  Haar Cascades are a key component of the Viola Jones object detection framework.  It is also important to note that face detection is not the same as face recognition.
