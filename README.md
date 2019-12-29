@@ -196,4 +196,10 @@ _Feature Matching_ are advanced methods of detecting matching objects in another
 
 The _watershed algorithm_ is an advanced algorithm that allows us to segment images into foreground and background.  It also allows us to manually set seeds to choose segments of an image.  The term watershed comes from geography - a land area that channels rainfall and snowmelt to creeks, streams, and rivers, and eventually to outflow points such as reservoirs, bays, and the ocean.  In image processing this is represented by a grayscale topographic surface where _high intensity_ denotes peaks and hills while _low intensity_ denotes valleys.  The algorithm can then fill every isolated valleys with different colored labels.
 
-_Haar Cascades_ can be used to detect faces and images.  This is not considered facial recognition (need deep learning).  Haar Cascades are a key component of the Viola Jones object detection framework.  It is also important to note that face detection is not the same as face recognition.
+_Haar Cascades_ can be used to detect faces and images.  This is not considered facial recognition (need deep learning).  Haar Cascades are a key component of the Viola Jones object detection framework.  It is also important to note that face detection is not the same as face recognition.  This algorithm is useful to detect if there is a face in an image and locate it, but not who it belongs too.
+
+The main features in the Viola-Jones algorithm are edge features (white against black) in horizontal and vertical directions, line features which are surrounded by white or black and four-rectangle features.  Our features are not binary so we utilize means to determine these features.  
+
+Calculating the sums for the entire image would be computationally expensive, but the viola-jones algorithm solves this by using the integral image (summed area table) O(1) running time.  The algorithm also saves time by going through a cascade of classifiers.  Once an image fails a classifier, we can stop attempting to detect a face.
+
+The downside to this algorithm is the very large data sets needed to craete your own features.  Luckily though, many pre-training sets of features already exist!
