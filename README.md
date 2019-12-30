@@ -264,3 +264,58 @@ MeanShift will be given a target to track, calculate a color histogram of the ta
 _CamShift_ (Continuously Adaptive MeanShift) wil adapt the size of the target window as the target moves in the frame (or out).
 
 ### Built-in Tracking Apis
+
+There are many object tracking methods... many have already been designed as simple API calls with OpenCV.  
+
+_Boosting Tracker_ : Based off AdaBoost algorithm (same underlying algorithm that HAAR Cascade based Face Detector used).  Evaluation occurs across multiple frames.
+
+_MIL Tracker_ : Similar to Boosting, but considers a neighborhood of points around the current location to create multiple instances.
+
+_KCF Tracker_ : Kernalized Correlation Filters.  Exploits some properties of the MIL Tracker and the fact that many data points will overlap, leading to more accurate and faster tracking.  Good first choice for a tracking algorithm.
+
+_TLD Tracker_ : Tracking, Learning, and Detection.  This algorithm is good with tracking with obstruction and tracks well under large changes in scale. It however can provide many false positives.
+
+_MedianFlow Tracker_ : Very good at reporting failed tracking.  Works well with predictable motion.  Fails under large motion (fast moving objects).
+
+## Deep Learning for Computer Vision
+
+### Machine Learning Basics
+
+_Machine Learning_ is a method of data analysis that automates analytical model building.  It uses algorithms that iteratively learn from data.. it allows computers to find hidden insights without being explicitly programmed.
+
+_Supervised Learning_ algorithms are trained using labeled examples, such as an input where the desired output is known.
+
+The Machine Learning Process generally runs in the following order:
+
+1) Data Acquisition : Acquiring your data (customers, sensors, etc.)
+2) Data Cleaning : Clean and format your data (Keras is one way to do this)
+3) Training Data/Test Data : Designate part of your data for training and part of your data for testing
+4) Model Testing : Evaluate model performance
+5) Model Building : tweak parameters until reach a desired output.
+6) Model Deployment : Utilize the model for new data.
+
+### Understanding Classification Metrics
+
+Typically, in a classification task a model can only achieve (2) results.. correct or incorrect
+
+The key classification metrics that we need to understand are:
+Accuracy:
+Recall:
+Precision: 
+F1-Score:
+
+### Introduction to Deep Learning Topics
+
+### Understanding a Neuron
+
+### Understanding a Neural Network
+
+### Cost Functions
+
+### Gradient Descent and Back Propagation
+
+### Keras Basics
+
+### MNIST Data Overview
+
+### Convolutional Neural Networks
