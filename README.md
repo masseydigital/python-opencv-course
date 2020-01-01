@@ -354,8 +354,36 @@ _Gradient Descent_ is an optimization algorithm for finding the minimum of a fun
 
 _Backpropagation_ is used to calculate the error contribution of each neuron after a batch of data is processed.  It relies heavily on the chain rule to go back through the network and calculate these errors.  It works by  calculating the error at the output and then distributes back through the network layers.
 
-### Keras Basics
-
 ### MNIST Data Overview
 
+MNIST is a dataset which has 60,000 training images and 10,000 test images (as of the lecture).  It contains handwritten digits between 0 and 9.
+
+A single digit image can be represented in an array.. in MNIST they are 28x28 normalized grayscale images.  These images can be visualized in a 4-dimensional array (Samples, x, y, channels).
+
+For the labels we are going to use One-Hot Encoding meaning that we'll have a single array for each image with the label at one of those values.  i.e. a drawn digit of 4 would have the label array [0,0,0,0,1,0,0,0,0,0]
+
+**It is common with image data to normalize between 0 and 1.  This is especially useful when using the sigmoid function**
+
 ### Convolutional Neural Networks
+
+_Tensors_ are n-dimensional arrays.  They make it very convenient to feed in sets of images into our model (I,H,W,C) where I=Images, H=Height(in pixels), W=Width(in pixels), and C=Color Channels.
+
+A _Densely Connected Layer_ is connects each neuron the the next layer in the neural network.
+
+In a _Convolutional Layer_ each unit is connected to smaller number of units in the next layer.  _Convolutions_ also have a major advantage form image processing, where pixels nearby to each other are much more correlated to each other for image detection.  Each CNN Layer looks at an increasingly larger part of the image.  Have units only connected to nearby units also aids in _invariance_.  CNN also helps with regularization, limiting the search of weights to the size of the convolution.  
+
+1-D Convolutions can be used as filters (such as for Edge Detection).  You can also add any number of filters to your neural network.  Each filter is detecting a different feature.  _Filters_ are commonly visualized with grids.
+
+The _stride_ of a filter is how many neurons are repeated (i.e. 2 will alternate weights for each neuron).
+
+[Cool Visualization Website](http://setosa.io/ev/image-kernels/)
+
+_Pooling layers_ will subsample the input image, which reduces the memory use and computer loads as well as reducing the number of parameters.  A small pooling kernel of 2 will remove 75% of an image.
+
+_Dropout_ can be thought of as a form of regularization to help prevent overfitting.  During training units are randomly dropped, along with their connections.  
+
+Some common deep learning networks include:
+AlexNet - Alex Krizhevsky et al
+GoogLeNet - Szegedy at Google Research
+ResNet by Kaiming He et al.
+
