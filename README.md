@@ -294,26 +294,65 @@ The Machine Learning Process generally runs in the following order:
 5) Model Building : tweak parameters until reach a desired output.
 6) Model Deployment : Utilize the model for new data.
 
-
 ### Understanding Classification Metrics
 
 Typically, in a classification task a model can only achieve (2) results.. correct or incorrect
 
 The key classification metrics that we need to understand are:
-Accuracy:
-Recall:
-Precision: 
-F1-Score:
 
-### Introduction to Deep Learning Topics
+__Accuracy:__  The number of correct predictions made by the model divided by the total number of predictions.  Accuracy is a good choice with balanced classes (equal number of training classifications).  i.e. evaluating with 50 cats and 50 dogs vs. 99 cats and 1 dog (a good cat finder).
 
-### Understanding a Neuron
+__Recall:__ The ability of a model to find all the relevant cases within a dataset.  The number of true positives divided by the number of false negatives.
+
+__Precision:__ The ability of a classification model to identify only relevant data points.  The number of true positives divided by the number of true positives plus the number of false positives.
+
+**There is often a trade-off between recall and precision**
+
+__F1-Score:__ Combination of recall and precision into a representative score.  The F1 Score is the harmonic mean of precision and recall taking both metrics into account.
+
+```math
+F1 = 2 * (precision * recall) / (precision + recall)
+```
+
+**Harmonic means punish extreme values**
+
+A _Confusion Matrix_ can be used to help map out false positives, false negatives, true positives and true negatives.  
+
+The Misclassification Rate (Error Rate) is (FP + FN) / total.
 
 ### Understanding a Neural Network
 
+A _neuron_ is a biological structure used in the body to pass along electrical signals.
+
+A _Perceptron_ is a neural network building block which takes in a list of inputs.. performs some calculation on them (activation function).. and then produces an output.
+
+A _Neural Network_ is a network of perceptrons that are used to perform layered calculations.  They consist of an input layer, multiple hidden layers, and an output layer.
+
+**3 or more layers is considered a "deep network".**
+
+Common activation functions are the _step function_, _sigmoid function_, _tanh function_, and _ReLu function_ (rectified linear units).  ReLu and tanh tend to have the best performance.
+
 ### Cost Functions
 
+_Cost Functions_ can be used to measure how far off we are from the expected outcome.
+
+_Quadratic Cost Function_: Large errors are more prominent due to squaring.  Calculation can slow down learning speed.
+
+```math
+C = sum(y-a)^2 / n 
+```
+
+_Cross Entropy_ Function allows for faster learning.  The larger the distance, the faster the neuron can learn.
+
+```math
+C = (-1/n) sum(y * ln(a) + (1-y) * ln (1-a))
+```
+
 ### Gradient Descent and Back Propagation
+
+_Gradient Descent_ is an optimization algorithm for finding the minimum of a function.  To find a local minimum, we take steps proportional to the negative of the gradient.
+
+_Backpropagation_ is used to calculate the error contribution of each neuron after a batch of data is processed.  It relies heavily on the chain rule to go back through the network and calculate these errors.  It works by  calculating the error at the output and then distributes back through the network layers.
 
 ### Keras Basics
 
