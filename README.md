@@ -387,3 +387,5 @@ AlexNet - Alex Krizhevsky et al
 GoogLeNet - Szegedy at Google Research
 ResNet by Kaiming He et al.
 
+The [CIFAR-10](https://en.wikipedia.org/wiki/CIFAR-10) dataset is a colored image dataset with various labels.
+
